@@ -1,7 +1,8 @@
-import React from "react";
 import "./App.css";
 import NavButton from "./components/NavButton";
-
+import Meal from "./components/Meal.js";
+import menu from "./data/data.js"
+console.log(menu)
 function App() {
   return (
     <>
@@ -15,20 +16,13 @@ function App() {
         <NavButton name={"Lunch"} />
         <NavButton name={"Shakes"} />
       </nav>
-      <main></main>
+      <main className="grid grid-cols-3 w-[1024px] gap-4 mx-auto border border-black">
+       {menu.map((meal) => {
+        return <Meal {...meal} key={meal.id}/>
+       })}
+      </main>
     </>
   );
 }
 
-// import React, { useState } from "react";
-
-// interface ChildProps {
-//   count: number;
-// }
-
-// const Child: React.FC<ChildProps> = ({ count }) => {
-//   const [counter, setCounter] = useState(count);
-//   const increment = () => {
-//     setCounter((prev) => prev + 1);
-//   };
 export default App;

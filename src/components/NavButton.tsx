@@ -1,9 +1,11 @@
-import React from "react";
+interface NavButtonProps {
+  name: string;
+}
 
-const NavButton = (props) => {
+const NavButton: React.FC<NavButtonProps> = ({ name }) => {
   return (
     <button className="px-4 py-1 rounded-lg bg-orange-400 text-white">
-      {props.name}
+      {name}
     </button>
   );
 };
