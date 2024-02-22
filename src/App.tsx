@@ -20,11 +20,10 @@ function App() {
     }
   };
 
-
   return (
     <>
       <Heading />
-      <Navigation filterArray={filterArray} current={current} />
+      <Navigation current={current} filterArray={filterArray} setCurrent={setCurrent}/>
       <Main current={current} filterArray={filterArray}/>
     </>
   );

@@ -2,10 +2,12 @@ interface NavButtonProps {
   name: string;
 }
 
-const NavButton: React.FC<NavButtonProps> = ({ name, filterArray }) => {
+const NavButton: React.FC<NavButtonProps> = ({ name, filterArray, current, setCurrent }) => {
   const onFilterArray = () => {
-   const filteredArray = filterArray(name)
-    console.log(filteredArray)
+    setCurrent((prev)=> {
+      prev = filterArray(name)
+      return prev
+    })
   }
   return (
     <button
