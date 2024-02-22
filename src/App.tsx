@@ -16,10 +16,7 @@ type Element = {
 
 function App() {
   const [current, setCurrent] = useState(menu);
-  // filterArray treba da primi event kao parametar i to :
-  // 1a automatski u onClick na button
-  // 1b eksplicitno, ja ga prosljedjuem
-  // 2b kad ja prosledjujem eksplicitno dodaj jos jedan parametar tipa string i console loguj ih
+
   const filterArray = (e) => {
     const target = e.target.innerText;
     let filteredArray;
@@ -28,7 +25,7 @@ function App() {
       : (filteredArray = menu.filter(
           (el) => el.category === target.toLowerCase()
         ));
-    setCurrent((prev) => (prev = filteredArray));
+    setCurrent(filteredArray);
   };
 
   return (
