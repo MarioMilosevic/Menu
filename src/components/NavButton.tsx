@@ -1,18 +1,13 @@
-interface NavButtonProps {
+type NavButtonProps = {
   name: string;
-}
+  filterArray: (category: string) => string[];
+};
 
-const NavButton: React.FC<NavButtonProps> = ({ name, filterArray, current, setCurrent }) => {
-  const onFilterArray = () => {
-    setCurrent((prev)=> {
-      prev = filterArray(name)
-      return prev
-    })
-  }
+const NavButton: React.FC<NavButtonProps> = ({ name, filterArray }) => {
   return (
     <button
-      onClick={onFilterArray}
-      className="px-4 py-1 rounded-lg bg-orange-400 text-white hover:bg-orange-700 transition-all duration-350"
+      onClick={filterArray}
+      className="px-4 py-1 rounded-lg bg-orange-400 text-white capitalize hover:bg-orange-700 transition-all duration-350"
     >
       {name}
     </button>
