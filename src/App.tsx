@@ -1,29 +1,21 @@
 import "./App.css";
 import Navigation from "./components/Navigation.js";
-import Main from "./components/Main.js";
+import Products from "./components/Products.js";
 import Heading from "./components/Heading.js";
-import menu from "./data/data.js";
+import menu from "./data/data.ts";
 import { useState } from "react";
-
-type Element = {
-  id: number;
-  title: string;
-  category: string;
-  price: number;
-  img: string;
-  desc: string;
-};
 
 function App() {
   const [current, setCurrent] = useState(menu);
 
-  const filterArray = (e) => {
-    const target = e.target.innerText;
+  const filterArray = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const target = (e.target as HTMLButtonElement).getAttribute("name");
+    console.log(target)
     let filteredArray;
     target === "All"
       ? (filteredArray = menu)
       : (filteredArray = menu.filter(
-          (el) => el.category === target.toLowerCase()
+          (el) => el.category === target?.toLowerCase()
         ));
     setCurrent(filteredArray);
   };
@@ -32,7 +24,7 @@ function App() {
     <>
       <Heading />
       <Navigation filterArray={filterArray} menu={menu} />
-      <Main current={current} />
+      <Products current={current} />
     </>
   );
 }
